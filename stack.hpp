@@ -9,10 +9,10 @@
 #ifndef stack_hpp
 #define stack_hpp
 
-//template <class genericType>
+template <class genericType>
 class stack{
     struct node {
-        int value;
+        genericType value;
         node * linkedNode;
     };
     
@@ -20,10 +20,43 @@ private:
     node * topNode;
 
 public:
-    stack();
-    void push(int);
-    void pop();
-    int top();
+    inline stack()
+    {
+        this -> topNode = nullptr;
+    }
+    
+    void pop()
+    {
+        topNode = topNode -> linkedNode;
+    }
+    
+    inline void push(genericType data)
+    {
+        node * tempNode = new node;
+        tempNode -> value = data;
+        
+        if (topNode == nullptr)
+        {
+            tempNode -> linkedNode = nullptr;
+            topNode = tempNode;
+        }
+        
+        else
+        {
+            tempNode -> linkedNode = topNode;
+            topNode = tempNode;
+        }
+    }
+    
+    inline genericType top()
+    {
+        return topNode -> value;
+    }
+    
+    inline ~stack()
+    {
+        delete topNode;
+    }
 };
 
 #endif /* stack_hpp */
