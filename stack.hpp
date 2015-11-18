@@ -20,7 +20,7 @@ private:
     node * topNode;
 
 public:
-    inline stack()
+    stack()
     {
         this -> topNode = nullptr;
     }
@@ -30,7 +30,7 @@ public:
         topNode = topNode -> linkedNode;
     }
     
-    inline void push(genericType data)
+    void push(genericType data)
     {
         node * tempNode = new node;
         tempNode -> value = data;
@@ -48,12 +48,12 @@ public:
         }
     }
     
-    inline genericType top()
+    genericType top()
     {
         return topNode -> value;
     }
     
-    inline ~stack()
+    ~stack()
     {
         delete topNode;
     }
